@@ -1,29 +1,47 @@
 import axios from "axios";
 import { useState } from "react";
-
+import Tasks from "./Tasks";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 const Input = () => {
   const [input, setInput] = useState("");
   const handelPost = async () => {
-    await axios.post("http://localhost:5000/tasks", { task: input });
+    if (input === "") return;
+    try {
+      await axios
+        .post("http://localhost:5000/task", { task: input })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      let n = "";
+      setInput(n);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
     <div>
-      <div className="grid grid-rows-1  justify-center mt-40 bg-slate-200 ">
-        <label htmlFor="" className="text-2xl ">
-          task
+      <div className="grid grid-rows-1  justify-center mt-40 bg-gray-800 text-white w-96 mx-auto rounded-xl shadow-2xl h-40 pt-2 pb-2">
+        <label htmlFor="" className="text-3xl ">
+          Enter your tasks
         </label>
         <input
+          name="task"
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type here"
-          className="input input-bordered w-full max-w-xs"
+          className="input input-bordered w-full mt-2 text-black"
         />
-        <button className="btn btn-primary size-min" onClick={handelPost}>
-          Primary
-        </button>
+        <AddCircleIcon
+          className="mt-2 text-blue-600  cursor-pointer"
+          onClick={() => handelPost()}
+        />
       </div>
+      <Tasks />
     </div>
   );
 };
