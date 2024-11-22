@@ -24,7 +24,7 @@ const Input = () => {
 
   return (
     <div>
-      <div className="grid grid-rows-1  justify-center mt-40 bg-gray-800 text-white w-96 mx-auto rounded-xl shadow-2xl h-40 pt-2 pb-2">
+      <div className="grid grid-rows-1  justify-center mt-40 bg-gray-800 text-white w-96 mx-auto rounded-xl shadow-2xl shadow-blue-950 hover:shadow-blue-600 h-40 pt-2 pb-2">
         <label htmlFor="" className="text-3xl ">
           Enter your tasks
         </label>

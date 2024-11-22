@@ -64,7 +64,7 @@ function Tasks() {
   return (
     <div>
       <div className="grid grid-rows-1 justify-center mt-2">
-        <div className="card text-white w-96 shadow-2xl bg-slate-800">
+        <div className="card text-white w-96 shadow-2xl bg-slate-800 shadow-blue-950 hover:shadow-blue-600">
           <div className="card-body">
             <h2 className="card-title text-2xl ">Tasks</h2>
             {tasks.map((task) => {
