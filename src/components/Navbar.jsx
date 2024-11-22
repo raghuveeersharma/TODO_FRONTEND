@@ -8,7 +8,14 @@ const Navbar = () => {
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a>Link</a>
+              <a
+                href="https://www.linkedin.com/in/raghuveer-sharma-810124252"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blue-300"
+              >
+                LinkedIn
+              </a>
             </li>
             <li>
               <details>

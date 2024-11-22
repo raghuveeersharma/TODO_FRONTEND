@@ -67,6 +67,7 @@ function Tasks() {
         <div className="card text-white w-96 shadow-2xl bg-slate-800 shadow-blue-950 hover:shadow-blue-600">
           <div className="card-body">
             <h2 className="card-title text-2xl ">Tasks</h2>
+            <hr />
             {tasks.map((task) => {
               return (
                 <div
