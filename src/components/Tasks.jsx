@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import CheckIcon from "@mui/icons-material/Check";
+import toast, { Toaster } from "react-hot-toast";
 
 function Tasks() {
   const [tasks, setTasks] = useState([]);
@@ -32,6 +33,7 @@ function Tasks() {
       .catch((err) => {
         console.log(err);
       });
+    toast.success("task deleted successfully!");
   };
 
   const handelEdit = async (id) => {
@@ -54,6 +56,7 @@ function Tasks() {
           console.log(err);
         });
     }
+    toast.success("task edited successfully!");
   };
 
   const handleEditClick = (task) => {
@@ -65,6 +68,7 @@ function Tasks() {
     <div>
       <div className="grid grid-rows-1 justify-center mt-2">
         <div className="card text-white w-96 shadow-2xl bg-slate-800 shadow-blue-950 hover:shadow-blue-600">
+          <Toaster position="top-center" reverseOrder={false} />
           <div className="card-body">
             <h2 className="card-title text-2xl ">Tasks</h2>
             <hr />
