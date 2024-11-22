@@ -21,6 +21,7 @@ const Input = () => {
     } catch (err) {
       console.log(err);
     }
+    window.location.reload();
     toast.success("task added successfully!");
   };
 
@@ -39,7 +40,8 @@ const Input = () => {
         </label>
         <input
           name="task"
-          type="text"
+          type="textarea"
+          autoFocus={true}
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type here"
