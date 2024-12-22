@@ -13,7 +13,7 @@ function Tasks() {
   useEffect(() => {
     // Fetch all tasks on component mount
     axios
-      .get("http://localhost:5000/tasks")
+      .get(`${window.location.origin}/tasks`)
       .then((res) => {
         setTasks(res.data); // Set tasks from the response
       })
@@ -25,7 +25,7 @@ function Tasks() {
   const handelDelete = async (id) => {
     // Delete task function
     await axios
-      .delete(`http://localhost:5000/task/${id}`)
+      .delete(`${window.location.origin}/tasks/${id}`)
       .then((res) => {
         setTasks(tasks.filter((task) => task._id !== id)); // Remove deleted task from UI
         console.log(`Task ${id} deleted`);
@@ -40,7 +40,7 @@ function Tasks() {
     // Edit task function, send updated task to the server
     if (editTask) {
       await axios
-        .put(`http://localhost:5000/task/${id}`, { task: taskInput })
+        .put(`${window.location.origin}/tasks/${id}`, { task: taskInput })
         .then((res) => {
           // Update task list with the edited task
           setTasks(

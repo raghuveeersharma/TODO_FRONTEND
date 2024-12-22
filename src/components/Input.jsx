@@ -9,7 +9,7 @@ const Input = () => {
     if (input === "") return;
     try {
       await axios
-        .post("http://localhost:5000/task", { task: input })
+        .post(`${window.location.origin}/tasks`, { task: input })
         .then((res) => {
           console.log(res);
         })
