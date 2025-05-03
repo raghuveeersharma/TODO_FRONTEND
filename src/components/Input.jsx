@@ -4,12 +4,13 @@ import Tasks from "./Tasks";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import toast, { Toaster } from "react-hot-toast";
 const Input = () => {
+  const link = import.meta.env.VITE_API_BASE_URL;
   const [input, setInput] = useState("");
   const handelPost = async () => {
     if (input === "") return;
     try {
       await axios
-        .post(`${window.location.origin}/tasks`, { task: input })
+        .post(`${link}/tasks`, { task: input })
         .then((res) => {
           console.log(res);
         })
@@ -33,7 +34,7 @@ const Input = () => {
 
   return (
     <div>
-      <div className="grid grid-rows-1  justify-center mt-40 bg-gray-800 text-white w-96 mx-auto rounded-xl shadow-2xl shadow-blue-950 hover:shadow-blue-600 h-40 pt-2 pb-2">
+      <div className="grid grid-rows-1  justify-center mt-40 bg-gray-800 text-white sm:w-96 w-64 mx-auto rounded-xl shadow-2xl shadow-blue-950 hover:shadow-blue-600 h-40 pt-2 pb-2">
         <Toaster position="top-center" reverseOrder={false} />
         <label htmlFor="" className="text-3xl ">
           Enter your tasks

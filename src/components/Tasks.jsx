@@ -9,11 +9,12 @@ function Tasks() {
   const [tasks, setTasks] = useState([]);
   const [editTask, setEditTask] = useState(null); // Track the task being edited
   const [taskInput, setTaskInput] = useState(""); // To hold the input value for editing
+  const link = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
     // Fetch all tasks on component mount
     axios
-      .get(`${window.location.origin}/tasks`)
+      .get(`${link}/tasks`)
       .then((res) => {
         setTasks(res.data); // Set tasks from the response
       })
@@ -25,7 +26,7 @@ function Tasks() {
   const handelDelete = async (id) => {
     // Delete task function
     await axios
-      .delete(`${window.location.origin}/tasks/${id}`)
+      .delete(`${link}/tasks/${id}`)
       .then((res) => {
         setTasks(tasks.filter((task) => task._id !== id)); // Remove deleted task from UI
         console.log(`Task ${id} deleted`);
@@ -40,7 +41,9 @@ function Tasks() {
     // Edit task function, send updated task to the server
     if (editTask) {
       await axios
-        .put(`${window.location.origin}/tasks/${id}`, { task: taskInput })
+        .put(`${link}/tasks/${id}`, {
+          task: taskInput,
+        })
         .then((res) => {
           // Update task list with the edited task
           setTasks(
@@ -67,7 +70,7 @@ function Tasks() {
   return (
     <div>
       <div className="grid grid-rows-1 justify-center mt-2">
-        <div className="card text-white w-96 shadow-2xl bg-slate-800 shadow-blue-950 hover:shadow-blue-600">
+        <div className="card text-white sm:w-96 w-64 shadow-2xl bg-slate-800 shadow-blue-950 hover:shadow-blue-600">
           <Toaster position="top-center" reverseOrder={false} />
           <div className="card-body">
             <h2 className="card-title text-2xl ">Tasks</h2>
